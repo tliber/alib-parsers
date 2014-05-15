@@ -98,9 +98,6 @@ def seq_get_all_ids(fin, lines):
 		result = result + '\n'
 	return result
 
-
-
-
 #second tabber for second ar7ray(evalues)
 def tab_separated_evals(evalues):
 	result = ''
@@ -153,6 +150,8 @@ def get_quar_assent(fin):
 			print accen.group(0) + 'wrherhethejhseerbhiehrieorhj'
 		else:
 			print 'cant find'
+
+# script options #
 if __name__ == '__main__':
 	if len(sys.argv) < 4 or len(sys.argv) > 5:
 		print len(sys.argv[:])
