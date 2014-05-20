@@ -7,9 +7,9 @@ This python program is designed to be used with hmm_search_files. It detects and
 
 = Details =
 
-_Input_Instructions_
+==Input Instructions==
 
-Argument: 
+Arguments: 
 1 = program 2 = hmm_file 3 = outfile_summary 4_outfile_details
 
 5 = optional input[ghd]
@@ -18,9 +18,9 @@ Argument:
 *all information written below is assumed for default(no 5) program
 *for further details see *options
 
-g = appends query and accession into outfile_summary(into columns 1 and 2)
-d = appends description into outfile_summary(column 3)
-h = provides headers at the top of the file for each of the output files
+||g  ||appends query and accession into outfile_summary(into columns 1 and 2)||
+||d  ||appends description into outfile_summary(column 3)||
+||h || provides headers at the top of the file for each of the output files||
 _Input Sample_
 
 >>python.exe pfam-hmm-parser-v01.py Zip.hmm.vs.CDS_L_sativa_v4HC_2014_02_01.e10 a.out b.out ghyd
