@@ -1,0 +1,13 @@
+#summary Detects query hits and outputs summary and details for hmm protein domains.
+#labels Featured,Phase-Deploy
+
+= Introduction =
+
+This program is designed to be used with hmm_search_files. It detects and displays the number of domain match hits for the sequence query. If matches are founds, it Extracts and appends tab-delimited(Excel formatted) domain sequence summary and domain annotations into 2 separate files. Optional arguments exist for custom modification of the output file. 
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
