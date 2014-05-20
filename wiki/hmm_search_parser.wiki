@@ -1,5 +1,5 @@
 #summary Detects query hits and outputs summary and details for hmm protein domains.
-#labels ,Phase-Deploy
+#labels Phase-Deploy
 
 = Introduction =
 
@@ -13,9 +13,11 @@ Argument:
 1 = program 2 = hmm_file 3 = outfile_summary 4_outfile_details
 
 5 = optional input[ghd]
+
 *any combination of the following can be entered in any order
 *all information written below is assumed for default(no 5) program
 *for further details see *options
+
 g = appends query and accession into outfile_summary(into columns 1 and 2)
 d = appends description into outfile_summary(column 3)
 h = provides headers at the top of the file for each of the output files
