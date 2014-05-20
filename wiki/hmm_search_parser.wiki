@@ -1,13 +1,24 @@
 #summary Detects query hits and outputs summary and details for hmm protein domains.
-#labels Featured,Phase-Deploy
+#labels ,Phase-Deploy
 
 = Introduction =
 
-This program is designed to be used with hmm_search_files. It detects and displays the number of domain match hits for the sequence query. If matches are founds, it Extracts and appends tab-delimited(Excel formatted) domain sequence summary and domain annotations into 2 separate files. Optional arguments exist for custom modification of the output file. 
+This python program is designed to be used with hmm_search_files. It detects and displays the number of domain match hits for the sequence query. If matches are founds, it Extracts and appends tab-delimited(Excel formatted) domain sequence summary and domain annotations into 2 separate files. Optional arguments exist for custom modification of the output file. 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+_Input_Instructions_
+
+Argument: 
+1 = program 2 = hmm_file 3 = outfile_summary 4_outfile_details
+
+5 = optional input[ghd]
+*any combination of the following can be entered in any order
+*all information written below is assumed for default(no 5) program
+*for further details see *options
+g = appends query and accession into outfile_summary(into columns 1 and 2)
+d = appends description into outfile_summary(column 3)
+h = provides headers at the top of the file for each of the output files
+_Input Sample_
+
+>>python.exe pfam-hmm-parser-v01.py Zip.hmm.vs.CDS_L_sativa_v4HC_2014_02_01.e10 a.out b.out ghyd
