@@ -56,7 +56,7 @@ Domain annotation for each sequence (and alignments):
 ||Column 4||normalized expectation (-log(Exp)) ||_score_||
 ||Column 5||expectation bias ||_bias_||
 ||Column 6||match value adjusted for haploid class and genome size, measured in pg (millions of base pairs) ||_c-Evalue_||
-||Column 7||amount of DNA embedded ajusted for alternative slicing, post translational modifications, multidomain proteins ,gene redundancy, expression and interaction ||_i-Evalue_||
+||Column 7||amount of DNA embedded adjusted for alternative slicing, post translational modifications, multidomain proteins ,gene redundancy, expression and interaction ||_i-Evalue_||
 ||Column 8||first position of the "Query" sequence in the alignment ||_hmm from_||
 ||Column 9||last position of the "Query" sequence in the alignment ||_hmmto_||
 ||Column 10|| type of sequencing conducted on Query||_type_||
