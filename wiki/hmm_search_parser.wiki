@@ -14,9 +14,9 @@ Arguments:
 
 5 = optional input _gh_
 
-*any combination of the following can be entered in any order
-*all information written below is assumed for default(no 5) program
-*for further details see *options
+any combination of the following can be entered in any order
+all information written below is assumed for default(no 5) program
+for further details see *options
 
 ||g  ||appends query, accession, and description into outfile_summary(into columns 1 and 2)||
 ||h || provides headers at the top of the file for each of the output files||
