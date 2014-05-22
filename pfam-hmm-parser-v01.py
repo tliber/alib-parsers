@@ -167,7 +167,7 @@ def fout2_headers(fout2, opt):
 	check = True
 	hmm_FILE  = open(fin, "rb")
 	EVal2  = open(fout2, "a")
-	to_print = 'Sequence #  type  score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  alito type   envfrom  envto  type   acc'
+	to_print = 'Sequence #  type  score  bias  c-Evalue  i-Evalue hmmfrom  hmmto type  alifrom  alito type   envfrom  envto  type   acc'
 	new_print[:] = to_print.split() 
 	new_print = tab_separate_from_array(new_print) + '\n'
 	f2.write(new_print)
