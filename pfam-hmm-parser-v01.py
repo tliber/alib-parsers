@@ -218,10 +218,8 @@ if __name__ == '__main__':
 	f = open(fout, 'a')
 	f2 = open(fout2, 'a')
 	f.write(evals_string)
-	# print evals_string
 	f.write('\n')
 	f2.write(td2_out)
-	# print id_string
 	f.close()
 	f2.close()
 
