@@ -59,18 +59,18 @@ Domain annotation for each sequence (and alignments):
 ||Column 7||amount of DNA embedded ajusted for alternative slicing, post translational modifications, multidomain proteins ,gene redundancy, expression and interaction ||_i-Evalue_||
 ||Column 8||first position of the "Query" sequence in the alignment ||_hmm from_||
 ||Column 9||last position of the "Query" sequence in the alignment ||_hmmto_||
-||Column 10|| description of the type of match||
+||Column 10|| description of the type of match||_type_||
   *[P] = partial alignment ||{{{..}}}||
   *[C] =complete alignment ||{{{[]}}}||
   *[R] = partial upstream alignment ||{{{.]}}}||
   *[F] = partial downstream alignment ||{{{[.}}}||
 	
 ||Column 11|| first position of the "Subject" sequence in the alignment ||_alifrom_||
-||Column 12||aligned tolast position of the "Subject" sequence in the alignment  ||_ali to_||  
+||Column 12||aligned to last position of the "Subject" sequence in the alignment  ||_ali to_||  
 ||Column 13||description of match type ||_PCRF_||
-||Column 14||_envfrom_|| 
-||Column 15||_envto_||     
-||Colum 16||description of match type ||_PCRF_||
+||Column 14||alignment for referenced sequence match||_envfrom_|| 
+||Column 15||alignment until referenced sequence match end||_envto_||     
+||Column 16||description of match type ||_PCRF_||
 ||Column 17|| percent of identity matched ||_acc_||
 
 ==Options==
