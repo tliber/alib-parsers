@@ -55,7 +55,7 @@ Domain annotation for each sequence (and alignments):
 ||Column 3||Type of sequence||
 ||Column 4||normalized expectation (-log(Exp)) [score]||
 ||Column 5||expectation bias||
-||Column 6||_c-Evalue_||
+||Column 6||match value adjusted for haploid class and genome size, measured in pg(millions of base pairs) ( in _c-Evalue_||
 ||Column 7||_i-Evalue_||
 ||Column 8||first position of the "Query" sequence in the alignment _hmm from_||
 ||Column 9||last position of the "Query" sequence in the alignment _hmmto_||
@@ -69,6 +69,6 @@ Domain annotation for each sequence (and alignments):
 ||Column 12||aligned tolast position of the "Subject" sequence in the alignment  _ali to_||  
 ||Column 13||description of match type _PCRF_||
 ||Column 14||_envfrom_|| 
-||Column 15||[_envto_||     
+||Column 15||_envto_||     
 ||Colum 16||description of match type _PCRF_||
 ||Column 17|| percent of identity matched _acc_||
