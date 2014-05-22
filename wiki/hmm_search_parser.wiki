@@ -50,20 +50,20 @@ Full Sequence
 
 Domain annotation for each sequence (and alignments):
 
-||Column 1||_Sequence ID_||
+||Column 1||Sequence ID||_sequence||
 ||Column 2||Sub domain number for domain match ||_{{{#}}}_||
-||Column 3||Type of sequence _type_||
+||Column 3||Type of sequence ||_type_||
 ||Column 4||normalized expectation (-log(Exp)) ||_score_||
-||Column 5||expectation ||_bias_||
+||Column 5||expectation bias ||_bias_||
 ||Column 6||match value adjusted for haploid class and genome size, measured in pg (millions of base pairs) ||_c-Evalue_||
 ||Column 7||amount of DNA embedded ajusted for alternative slicing, post translational modifications, multidomain proteins ,gene redundancy, expression and interaction ||_i-Evalue_||
 ||Column 8||first position of the "Query" sequence in the alignment ||_hmm from_||
 ||Column 9||last position of the "Query" sequence in the alignment ||_hmmto_||
 ||Column 10|| description of the type of match||
-||*[P] = partial alignment ||{{{..}}}||
-||*[C] =complete alignment ||{{{[]}}}||
-||*[R] = partial upstream alignment ||{{{.]}}}||
-||*[F] = partial downstream alignment ||{{{[.}}}||
+  *[P] = partial alignment ||{{{..}}}||
+  *[C] =complete alignment ||{{{[]}}}||
+  *[R] = partial upstream alignment ||{{{.]}}}||
+  *[F] = partial downstream alignment ||{{{[.}}}||
 	
 ||Column 11|| first position of the "Subject" sequence in the alignment ||_alifrom_||
 ||Column 12||aligned tolast position of the "Subject" sequence in the alignment  ||_ali to_||  
