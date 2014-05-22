@@ -32,17 +32,17 @@ Scores for complete sequences (score includes all domains):
 Full Sequence
 ||Column 1|| statistical significance for hmm query sequence ||_E-value_||
 ||Column 2||normalized expectation (-log(Exp)) ||_score_||
-||Column 3||E-value score bias||_bias_||    
+||Column 3||E-value bias for query sequence||_bias_||    
 ||_Best Domain Match_||
 ||Column 4|| statistical significance for protein domain sequence match ||_E-value_||
 ||Column 5|| normalized expectation (-log(Exp)) ||_score_||  
-||Column 6||[bias]||    
+||Column 6||E-value bias for best domain match||_bias_||    
 ||_Domain specific hits_||
 ||Column 7|| actual Number of domain matches ||_exp_|| 
 ||Column 8||adjusted number of domain matches ||_N_||
 ||_Identifiers_||
 ||Column 9|| ID for the protein domain sequence ||_Sequence_||
-||Column 10 ||Description of the sequence alignment ||_Description_]||
+||Column 10 ||Description of the sequence alignment ||_Description_||
 
 *Sequence’s Domain Annotations*
 
