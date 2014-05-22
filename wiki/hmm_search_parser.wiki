@@ -54,7 +54,7 @@ Domain annotation for each sequence (and alignments):
 ||Column 2||Sub domain number for domain match _{{{#}}}_||
 ||Column 3||Type of sequence _type_||
 ||Column 4||normalized expectation (-log(Exp)) _score_||
-||Column 5||expectation bias||
+||Column 5||expectation _bias_||
 ||Column 6||match value adjusted for haploid class and genome size, measured in pg (millions of base pairs) _c-Evalue_||
 ||Column 7||amount of DNA embedded ajusted for alternative slicing, post translational modifications, multidomain proteins ,gene redundancy, expression and interaction _i-Evalue_||
 ||Column 8||first position of the "Query" sequence in the alignment _hmm from_||
@@ -72,3 +72,12 @@ Domain annotation for each sequence (and alignments):
 ||Column 15||_envto_||     
 ||Colum 16||description of match type _PCRF_||
 ||Column 17|| percent of identity matched _acc_||
+
+==Options==
+
+if option _d_ was selected _outfile2_ will contain the 3 additional rows,
+the rest of the columns will be shifted to the right in order to adjust.
+
+||Column 1|| hmm Query ID ||_Query_||
+||Column 2|| hmm Accession ID ||_Accession_||
+||Column 3|| query protein's description ||_Description_||
