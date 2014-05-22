@@ -41,8 +41,8 @@ _of domain specific hits_
 ||Column 7|| actual Number of domain matches [exp]|| 
 ||Column 8||adjusted number of domain matches[N]||
 _Identifiers_
-||Column 9) ID for the protein domain sequence [Sequence]
-Column 10)[Description]||
+||Column 9|| ID for the protein domain sequence [Sequence]
+Column 10 ||[Description]||
 
 *Sequence’s Domain Annotations*
 
@@ -60,10 +60,10 @@ Domain annotation for each sequence (and alignments):
 ||Column 8|| first position of the "Query" sequence in the alignment[hmm from]||
 ||Column 9|| last position of the "Query" sequence in the alignment[hmmto]||
 ||Column 10|| description of the type of match||
- 	*||[P] = partial alignment {..}||
-	*||[C] =complete alignment {[]}||
-	*||[R] = partial upstream alignment {.]}||
-	*||[F] = partial downstream alignment {[.}||
+ 	*||[P] = partial alignment ||{..}||
+	*||[C] =complete alignment ||{[]}||
+	*||[R] = partial upstream alignment ||{.]}||
+	*||[F] = partial downstream alignment ||{[.}||
 	
 ||Column 11|| first position of the "Subject" sequence in the alignment [alifrom]||
 ||Column 12||aligned tolast position of the "Subject" sequence in the alignment  [ali to]||  
