@@ -12,7 +12,7 @@ This python program is designed to be used with hmm_search_files. It detects and
 Arguments: 
 1 = program 2 = hmm_file 3 = outfile_summary 4_outfile_details
 
-5 = optional input[gh]
+5 = optional input _gh_
 
 *any combination of the following can be entered in any order
 *all information written below is assumed for default(no 5) program
@@ -22,7 +22,7 @@ Arguments:
 ||h || provides headers at the top of the file for each of the output files||
 _Input Sample_
 
->>python.exe pfam-hmm-parser-v01.py Zip.hmm.vs.CDS_L_sativa_v4HC_2014_02_01.e10 a.out b.out gh
+>>python.exe pfam-hmm-parser-v01.py Zip.hmm.vs.CDS_L_sativa_v4HC_2014_02_01.e10 a.out b.out _gh_
 
 
 Sequence Summary:
@@ -54,18 +54,20 @@ Domain annotation for each sequence (and alignments):
 ||Column 3||Type of sequence||
 ||Column 4||normalized expectation (-log(Exp)) [score]||
 ||Column 5||expectation bias  
-||Column 4||[c-Evalue]  
-||Column 5||[i-Evalue ]
-||Column 6|| first position of the "Query" sequence in the alignment[hmm from]||
-||Column 7|| last position of the "Query" sequence in the alignment[hmmto]||
-||Column 8|| description of the type of match||
-	*||[p] = partial alignment {..}||
-	*||[c] =complete alignment {[]}||
-	*||[r] = partial upstream alignment {.]}||
-	*||[f] = partial downstream alignment {[.}||
+||Column 6||[c-Evalue]  
+||Column 7||[i-Evalue ]
+||Column 8|| first position of the "Query" sequence in the alignment[hmm from]||
+||Column 9|| last position of the "Query" sequence in the alignment[hmmto]||
+||Column 10|| description of the type of match||
+ 	*||[P] = partial alignment {..}||
+	*||[C] =complete alignment {[]}||
+	*||[R] = partial upstream alignment {.]}||
+	*||[F] = partial downstream alignment {[.}||
 	
-||Column 9|| first position of the "Subject" sequence in the alignment [alifrom]||
-||Column 10||aligned tolast position of the "Subject" sequence in the alignment  [ali to]||  
-||Column 11||[envfrom]|| 
-||Column 12||[env to]||     
-||Column 13|| percent of identity matched[acc]||
+||Column 11|| first position of the "Subject" sequence in the alignment [alifrom]||
+||Column 12||aligned tolast position of the "Subject" sequence in the alignment  [ali to]||  
+||Column 13||description of match type _PCRF_||
+||Column 14||[envfrom]|| 
+||Column 15||[env to]||     
+||Colum 16||description of match type _PCRF_||
+||Column 17|| percent of identity matched[acc]||
