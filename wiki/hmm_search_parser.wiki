@@ -80,3 +80,6 @@ the rest of the columns will be shifted to the right in order to adjust.
 ||Column 1|| hmm Query ID ||_Query_||
 ||Column 2|| hmm Accession ID ||_Accession_||
 ||Column 3|| query protein's description ||_Description_||
+
+
+For more information about hmm_pfam_domains visit http://hmmer.janelia.org/
