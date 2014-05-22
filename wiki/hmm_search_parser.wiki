@@ -30,40 +30,42 @@ Sequence Summary:
 Scores for complete sequences (score includes all domains):
 
 Full Sequence
-Column 1) statistical significance for hmm query sequence [E-value]
-Column 2) normalized expectation (-log(Exp)) [score]  
-Column 3)[bias]    
-Best Domain Match
-Column 4) statistical significance for protein domain seqeunce match [E-value]
-Column 5) normalized expectation (-log(Exp)) [score]  
-Column 6)[bias]    
-#of domain specific hits
-Column 7) actual Number of domain matches [exp] 
-Column 8) adjusted number of domain matches[N]
-Identifiers
-Column 9) ID for the protein domain sequence [Sequence]
-Column 10)[Description] 
+||Column 1|| statistical significance for hmm query sequence [E-value]||
+||Column 2||normalized expectation (-log(Exp)) [score]||
+||Column 3||[bias]||    
+||Best Domain Match||
+||Column 4|| statistical significance for protein domain sequence match [E-value]||
+||Column 5|| normalized expectation (-log(Exp)) [score]||  
+||Column 6||[bias]||    
+_of domain specific hits_
+||Column 7|| actual Number of domain matches [exp]|| 
+||Column 8||adjusted number of domain matches[N]||
+_Identifiers_
+||Column 9) ID for the protein domain sequence [Sequence]
+Column 10)[Description]||
 Sequence’s Domain Annotations
 
 *.domain_annotation[output file 2]
 
 Domain annotation for each sequence (and alignments):
 
-Column 1)Subdomain number for domain match[#]   
-Column 2) normalized expectation (-log(Exp)) [score]
-Column 3)[bias]  
-Column 4)[c-Evalue]  
-Column 5)[i-Evalue ]
-Column 6) first position of the "Query" sequence in the alignment[hmm from]
-Column 7) last position of the "Query" sequence in the alignment[hmmto]
-Column 8) description of the type of match
-	[p] = partial alignment {..}
-	[c] =complete alignment {[]}
-	[r] = partial upstream alignment {.]}
-	[f] = partial downstream alignment {[.}
+||Column 1||Sequence ID||
+||Column 2||Sub domain number for domain match[#]||
+||Column 3||Type of sequence||
+||Column 4||normalized expectation (-log(Exp)) [score]||
+||Column 5||expectation bias  
+||Column 4||[c-Evalue]  
+||Column 5||[i-Evalue ]
+||Column 6|| first position of the "Query" sequence in the alignment[hmm from]||
+||Column 7|| last position of the "Query" sequence in the alignment[hmmto]||
+||Column 8|| description of the type of match||
+	*||[p] = partial alignment {..}||
+	*||[c] =complete alignment {[]}||
+	*||[r] = partial upstream alignment {.]}||
+	*||[f] = partial downstream alignment {[.}||
 	
-Column 9) first position of the "Subject" sequence in the alignment [alifrom]
-Column 10)aligned tolast position of the "Subject" sequence in the alignment  [ali to]  
-Column 11)[envfrom]  
-Column 12)[env to]     
-Column 13) percent of identity matched[acc]
+||Column 9|| first position of the "Subject" sequence in the alignment [alifrom]||
+||Column 10||aligned tolast position of the "Subject" sequence in the alignment  [ali to]||  
+||Column 11||[envfrom]|| 
+||Column 12||[env to]||     
+||Column 13|| percent of identity matched[acc]||
