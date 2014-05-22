@@ -50,13 +50,13 @@ Full Sequence
 
 Domain annotation for each sequence (and alignments):
 
-||Column 1||Sequence ID||
-||Column 2||Sub domain number for domain match[#]||
-||Column 3||Type of sequence||
-||Column 4||normalized expectation (-log(Exp)) [score]||
+||Column 1||_Sequence ID_||
+||Column 2||Sub domain number for domain match_{{{#}}}_]||
+||Column 3||Type of sequence _type_||
+||Column 4||normalized expectation (-log(Exp)) _score_||
 ||Column 5||expectation bias||
-||Column 6||match value adjusted for haploid class and genome size, measured in pg(millions of base pairs) ( in _c-Evalue_||
-||Column 7||_i-Evalue_||
+||Column 6||match value adjusted for haploid class and genome size, measured in pg (millions of base pairs) _c-Evalue_||
+||Column 7||amount of DNA embedded ajusted for alternative slicing, post translational modifications, multidomain proteins ,gene redundancy, expression and interaction _i-Evalue_||
 ||Column 8||first position of the "Query" sequence in the alignment _hmm from_||
 ||Column 9||last position of the "Query" sequence in the alignment _hmmto_||
 ||Column 10|| description of the type of match||
