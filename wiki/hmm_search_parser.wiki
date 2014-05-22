@@ -68,6 +68,6 @@ Domain annotation for each sequence (and alignments):
 ||Column 12||aligned tolast position of the "Subject" sequence in the alignment  [ali to]||  
 ||Column 13||description of match type _PCRF_||
 ||Column 14||[envfrom]|| 
-||Column 15||[env to]||     
+||Column 15||[envto||     
 ||Colum 16||description of match type _PCRF_||
 ||Column 17|| percent of identity matched[acc]||
