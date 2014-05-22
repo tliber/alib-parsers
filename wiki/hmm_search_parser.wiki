@@ -57,13 +57,13 @@ Domain annotation for each sequence (and alignments):
 ||Column 5||expectation bias||
 ||Column 6||_c-Evalue_||
 ||Column 7||_i-Evalue_||
-||Column 8|| first position of the "Query" sequence in the alignment[hmm from]||
-||Column 9|| last position of the "Query" sequence in the alignment[hmmto]||
+||Column 8||first position of the "Query" sequence in the alignment _hmm from_||
+||Column 9||last position of the "Query" sequence in the alignment _hmmto_||
 ||Column 10|| description of the type of match||
- 	*||[P] = partial alignment ||{..}||
-	*||[C] =complete alignment ||{[]}||
-	*||[R] = partial upstream alignment ||{.]}||
-	*||[F] = partial downstream alignment ||{[.}||
+ 	#||[P] = partial alignment ||{..}||
+	#||[C] =complete alignment ||{[]}||
+	#||[R] = partial upstream alignment ||{.]}||
+	#||[F] = partial downstream alignment ||{[.}||
 	
 ||Column 11|| first position of the "Subject" sequence in the alignment [alifrom]||
 ||Column 12||aligned tolast position of the "Subject" sequence in the alignment  [ali to]||  
@@ -71,4 +71,4 @@ Domain annotation for each sequence (and alignments):
 ||Column 14||[envfrom]|| 
 ||Column 15||[envto||     
 ||Colum 16||description of match type _PCRF_||
-||Column 17|| percent of identity matched[acc]||
+||Column 17|| percent of identity matched _acc_||
