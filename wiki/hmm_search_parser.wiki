@@ -16,17 +16,17 @@ Arguments:
 
 any combination of the following can be entered in any order
 all information written below is assumed for default(no 5) program
-for further details see *options
+for further details see *options*
 
 ||g  ||appends query, accession, and description into outfile_summary(into columns 1 and 2)||
 ||h || provides headers at the top of the file for each of the output files||
 _Input Sample_
 
->>python.exe pfam-hmm-parser-v01.py Zip.hmm.vs.CDS_L_sativa_v4HC_2014_02_01.e10 a.out b.out _gh_
+'>>python.exe pfam-hmm-parser-v01.py Zip.hmm.vs.CDS_L_sativa_v4HC_2014_02_01.e10 a.out b.out _gh_'
 
 
-Sequence Summary:
-*.Eval_Output [output file 1]
+*Sequence Summary*
+.Eval_Output [output file 1]
 Scores for complete sequences (score includes all domains):
 
 Full Sequence
@@ -43,9 +43,10 @@ _of domain specific hits_
 _Identifiers_
 ||Column 9) ID for the protein domain sequence [Sequence]
 Column 10)[Description]||
-Sequence’s Domain Annotations
 
-*.domain_annotation[output file 2]
+*Sequence’s Domain Annotations*
+
+.domain_annotation[output file 2]
 
 Domain annotation for each sequence (and alignments):
 
@@ -53,9 +54,9 @@ Domain annotation for each sequence (and alignments):
 ||Column 2||Sub domain number for domain match[#]||
 ||Column 3||Type of sequence||
 ||Column 4||normalized expectation (-log(Exp)) [score]||
-||Column 5||expectation bias  
-||Column 6||[c-Evalue]  
-||Column 7||[i-Evalue ]
+||Column 5||expectation bias||
+||Column 6||_c-Evalue_||
+||Column 7||_i-Evalue_||
 ||Column 8|| first position of the "Query" sequence in the alignment[hmm from]||
 ||Column 9|| last position of the "Query" sequence in the alignment[hmmto]||
 ||Column 10|| description of the type of match||
