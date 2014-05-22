@@ -51,7 +51,7 @@ Full Sequence
 Domain annotation for each sequence (and alignments):
 
 ||Column 1||_Sequence ID_||
-||Column 2||Sub domain number for domain match_{{{#}}}_]||
+||Column 2||Sub domain number for domain match _{{{#}}}_||
 ||Column 3||Type of sequence _type_||
 ||Column 4||normalized expectation (-log(Exp)) _score_||
 ||Column 5||expectation bias||
