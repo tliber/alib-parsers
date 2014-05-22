@@ -12,15 +12,58 @@ This python program is designed to be used with hmm_search_files. It detects and
 Arguments: 
 1 = program 2 = hmm_file 3 = outfile_summary 4_outfile_details
 
-5 = optional input[ghd]
+5 = optional input[gh]
 
 *any combination of the following can be entered in any order
 *all information written below is assumed for default(no 5) program
 *for further details see *options
 
-||g  ||appends query and accession into outfile_summary(into columns 1 and 2)||
-||d  ||appends description into outfile_summary(column 3)||
+||g  ||appends query, accession, and description into outfile_summary(into columns 1 and 2)||
 ||h || provides headers at the top of the file for each of the output files||
 _Input Sample_
 
->>python.exe pfam-hmm-parser-v01.py Zip.hmm.vs.CDS_L_sativa_v4HC_2014_02_01.e10 a.out b.out ghyd
+>>python.exe pfam-hmm-parser-v01.py Zip.hmm.vs.CDS_L_sativa_v4HC_2014_02_01.e10 a.out b.out gh
+
+
+Sequence Summary:
+*.Eval_Output [output file 1]
+Scores for complete sequences (score includes all domains):
+
+Full Sequence
+Column 1) statistical significance for hmm query sequence [E-value]
+Column 2) normalized expectation (-log(Exp)) [score]  
+Column 3)[bias]    
+Best Domain Match
+Column 4) statistical significance for protein domain seqeunce match [E-value]
+Column 5) normalized expectation (-log(Exp)) [score]  
+Column 6)[bias]    
+#of domain specific hits
+Column 7) actual Number of domain matches [exp] 
+Column 8) adjusted number of domain matches[N]
+Identifiers
+Column 9) ID for the protein domain sequence [Sequence]
+Column 10)[Description] 
+Sequence’s Domain Annotations
+
+*.domain_annotation[output file 2]
+
+Domain annotation for each sequence (and alignments):
+
+Column 1)Subdomain number for domain match[#]   
+Column 2) normalized expectation (-log(Exp)) [score]
+Column 3)[bias]  
+Column 4)[c-Evalue]  
+Column 5)[i-Evalue ]
+Column 6) first position of the "Query" sequence in the alignment[hmm from]
+Column 7) last position of the "Query" sequence in the alignment[hmmto]
+Column 8) description of the type of match
+	[p] = partial alignment {..}
+	[c] =complete alignment {[]}
+	[r] = partial upstream alignment {.]}
+	[f] = partial downstream alignment {[.}
+	
+Column 9) first position of the "Subject" sequence in the alignment [alifrom]
+Column 10)aligned tolast position of the "Subject" sequence in the alignment  [ali to]  
+Column 11)[envfrom]  
+Column 12)[env to]     
+Column 13) percent of identity matched[acc]
