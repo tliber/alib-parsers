@@ -165,13 +165,20 @@ def fout2_headers(fout2, opt):
 	to_print = ''
 	new_print = []
 	check = True
-	hmm_FILE  = open(fin, "rb")
-	EVal2  = open(fout2, "a")
-	to_print = 'Sequence #  type  score  bias  c-Evalue  i-Evalue hmmfrom  hmmto type  alifrom  alito type   envfrom  envto  type   acc'
+	to_print = 'Sequence #  type  score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  alito type   envfrom  envto  type   acc'
+	# if 'g' in opt:
+		# to_print = 'Query	Accession	Description ' + to_print
 	new_print[:] = to_print.split() 
 	new_print = tab_separate_from_array(new_print) + '\n'
 	f2.write(new_print)
-
+def tab_fout2(lines):
+	to_print = []
+	for line in lines:
+		
+		to_print = tab_separate_from_array(get_space_array(lines))
+	print to_print
+	return to_print			
+	
 
 if __name__ == '__main__':
 	if len(sys.argv) < 4 or len(sys.argv) > 5:
@@ -206,14 +213,14 @@ if __name__ == '__main__':
 		fout2_headers(fout2, opt)
 	evals_string = tab_separated_evals(evalues)
 	id_string = seq_get_all_ids(fin, evalues, opt)
-
+	td2_out = tab_fout2(id_string)
 	
 	f = open(fout, 'a')
 	f2 = open(fout2, 'a')
 	f.write(evals_string)
 	# print evals_string
 	f.write('\n')
-	f2.write(id_string)
+	f2.write(td2_out)
 	# print id_string
 	f.close()
 	f2.close()
