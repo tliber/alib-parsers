@@ -96,11 +96,6 @@ def seq_get_all_ids(fin, lines, opt):
 		for seq in seqs:
 			result = result + identifier + seq
 	return result
-
-
-
-
-#second tabber for second ar7ray(evalues)
 def tab_separated_evals(evalues):
 	result = ''
 	for evalue in evalues:		
