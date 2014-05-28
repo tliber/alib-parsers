@@ -80,13 +80,21 @@ Domain annotation for each sequence (and alignments):
 
 ==Options==
 
-if option _d_ was selected _outfile1_ and _outfile2_ will contain the 3 additional rows,
+if option _g_ was selected _outfile1_ and _outfile2_ will contain the 3 additional rows,
 the rest of the columns will be shifted to the right in order to adjust.
 
 ||Column 1|| hmm Query ID ||_Query_||
 ||Column 2|| hmm Accession ID ||_Accession_||
 ||Column 3|| query protein's description ||_Description_||
 
-if option 
+if options _d_ was selected
+
+results can be filtered in if they match certain criteria.
+
+example _hmmsearchparser_ _a.out_ _d _-e_ _1e10_ _-l_ _.50_
+
+option -e filters out the sequences with i-value below the matching value
+
+option -l filters out sequences whose bp length is below the percentage given (that fulfill) critea of _-e_ as well
 
 For more information about hmm_pfam_domains visit http://hmmer.janelia.org/
