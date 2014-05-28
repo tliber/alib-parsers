@@ -12,9 +12,15 @@ This python program is designed to be used with hmm_search_files. It detects and
 Arguments: 
 1 = program 2 = hmm_file 3 = outfile_summary 4_outfile_details
 
-5 = optional input _gh_
+5 = optional input _ghd_
 
-any combination of the following can be entered in any order
+if d(escriptive)
+
+6 = -e 7 = minimum desired threshold
+
+if d and -e can input additional option:
+8 = -l 9 = minimum threshold
+
 all information written below is assumed for default(no 5) program
 for further details see *options*
 
@@ -74,12 +80,13 @@ Domain annotation for each sequence (and alignments):
 
 ==Options==
 
-if option _d_ was selected _outfile2_ will contain the 3 additional rows,
+if option _d_ was selected _outfile1_ and _outfile2_ will contain the 3 additional rows,
 the rest of the columns will be shifted to the right in order to adjust.
 
 ||Column 1|| hmm Query ID ||_Query_||
 ||Column 2|| hmm Accession ID ||_Accession_||
 ||Column 3|| query protein's description ||_Description_||
 
+if option 
 
 For more information about hmm_pfam_domains visit http://hmmer.janelia.org/
