@@ -127,6 +127,7 @@ def get_aminos(fin, desc_arr):
 def fasta_former(data):
 	format = ''
 	for line in data:
+		# print str(line)
 		format = format + line + '\n'
 	return format
 if __name__ == '__main__':
@@ -136,6 +137,7 @@ if __name__ == '__main__':
 		print "optional 6th argv allows for minimal lenght"
 		print len(sys.argv)
 		sys.exit(1)
+
 	fin = sys.argv[1]
 	fout = sys.argv[2]
 	hits = domain_hits(fin)
