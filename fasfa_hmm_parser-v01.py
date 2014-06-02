@@ -127,7 +127,6 @@ def get_aminos(fin, desc_arr):
 def fasta_former(data):
 	format = ''
 	for line in data:
-		# print str(line)
 		format = format + line + '\n'
 	return format
 if __name__ == '__main__':
@@ -147,7 +146,6 @@ if __name__ == '__main__':
 	rows = get_rows(fin)
 	seq_ids = get_ids(rows)
 	seq_det = get_det(fin, seq_ids)
-	#can insert filter options here
 	fasta_data = get_aminos(fin, seq_det) 
 	fasta_format =fasta_former(fasta_data)
 	f = open(fout, 'a')
