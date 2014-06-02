@@ -2,7 +2,7 @@
 
 
 ##########################
-#      FASFA PARCER	     #
+#      FASTA PARCER	     #
 #      No filter(yet)	 #
 #						 #
 #						 #
@@ -82,7 +82,7 @@ def get_det(fin, ids):
 					finder = False
 		else:
 			break
-	print all_desc
+	# print all_desc
 	return all_desc	
 def get_aminos(fin, desc_arr):
 	hmm_f = open(fin, 'r')
@@ -114,7 +114,7 @@ def get_aminos(fin, desc_arr):
 						else:
 							sequence = sequence + fmatch.group(1)
 							sequence = re.sub('-','',sequence)
-							fasfa_arr.append(desc_arr[step][0] + '\t' + sequence)
+							fasfa_arr.append('>' + desc_arr[step][0] + ' ' + 'D' + desc_arr[step][1] + ' ' + desc_arr[step][10]+ ' ' + desc_arr[step][11] + '\n' + sequence)
 							step += 1
 							sequence = ''
 							if step == limit:
@@ -122,15 +122,12 @@ def get_aminos(fin, desc_arr):
 							if desc_arr[step][0] != desc_arr[(step - 1)][0]:
 								id_match = False
 								found = False
-
-
 	return fasfa_arr
 
-def fasfa_former(data):
+def fasta_former(data):
 	format = ''
 	for line in data:
 		format = format + line + '\n'
-	print format
 	return format
 if __name__ == '__main__':
 	if len(sys.argv) <3:
@@ -149,7 +146,7 @@ if __name__ == '__main__':
 	seq_ids = get_ids(rows)
 	seq_det = get_det(fin, seq_ids)
 	#can insert filter options here
-	fasfa_data = get_aminos(fin, seq_det) 
-	fasfa_format =fasfa_former(fasfa_data)
+	fasta_data = get_aminos(fin, seq_det) 
+	fasta_format =fasta_former(fasta_data)
 	f = open(fout, 'a')
-	f.write(fasfa_format)
+	f.write(fasta_format)
