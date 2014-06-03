@@ -81,6 +81,7 @@ def get_det(fin, ids):
 					finder = False
 		else:
 			break
+	#print
 	return all_desc	
 def get_aminos(fin, desc_arr):
 	hmm_f = open(fin, 'r')
