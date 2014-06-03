@@ -31,7 +31,7 @@ def domain_hits(fin):
 			domainValue = re.findall('\d+',domainValueString)
 			if domainValue:
 				domainValue = int(domainValue[0])
-				print str(domainValue)+ ' hits for ' + fin
+				print str(domainValue)+ ' possible domain matches in ' + fin
 			return domainValue
 def get_rows(fin, opts):
 	arr_rows = []
@@ -132,16 +132,16 @@ def fasta_former(data):
 	return format
 def options():
 	opts = OptionParser()
-	opts.add_option("-a","--acc", dest="o_acc", help ="returns fasta sequences with minimum accuaracy(as a percentage) of the matching sequence")
-	# opts.add_option("-h","--help", dest="help", help = "prints details about options")
-	opts.add_option("-l","--len", dest="o_len", help = "seq")
-	opts.add_option("-i","--ival", dest="ivalue",help="sets max for i-values")
-	opts.add_option("-c","--cval", dest="cvalue", help = "sets max for e-values")
+	opts.add_option("-a","--acc", dest="o_acc", help ="sets a min accuaracy for sequence match(enter percentage)")
+	opts.add_option("-l","--len", dest="o_len", help = "set min sequence lenght(enter lenght)")
+	opts.add_option("-i","--ival", dest="ivalue",help="sets max for i-values(enter i-value)")
+	opts.add_option("-c","--cval", dest="cvalue", help = "sets max for e-values(enter e-value")
     
 	(opts, args) = opts.parse_args()
 
 	return opts.__dict__, args
 def opts_filter(fin, seq_det, opts):
+	
 	if opts["cvalue"]:
 		for row in seq_det:
 			if float(row[5]) >= float(opts["cvalue"]):
@@ -153,11 +153,22 @@ def opts_filter(fin, seq_det, opts):
 	if opts["o_acc"]:	
 		for row in seq_det:
 			if float(row[16]) <= float(opts["o_acc"]):
-				print str(row[16])
 				seq_det.remove(row)
-
+	if opts["o_len"]:
+		reader = open(fin,'rb')
+		finder = True
+		for line in reader:
+			if finder:
+				found = re.match('Query:[\s\t]+(\S+)[\s\t]+\[(\w+)\=(\d+)\]',line)
+				if found:
+					for row in seq_det:
+						if int(row[11]) - int(row[10]) <= int(opts["o_len"]):
+							seq_det.remove(row)
+					finder = False
+			else:
+				break
 					
-	print str(len(seq_det)) + ' hits filtered from ' + str(fin)
+	print str(len(seq_det)) + ' sequence matches extracted from ' + str(fin)
 	return seq_det
 def real_main(fin, fout):
 	hits = domain_hits(fin)
