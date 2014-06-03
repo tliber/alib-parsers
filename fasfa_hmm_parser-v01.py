@@ -3,7 +3,7 @@
 
 ##########################
 #      FASTA PARCER	     #
-#      No filter(yet)	 #
+#      					 #
 #						 #
 #						 #
 #						 #
@@ -31,7 +31,6 @@ def domain_hits(fin):
 			domainValue = re.findall('\d+',domainValueString)
 			if domainValue:
 				domainValue = int(domainValue[0])
-				print str(domainValue)+ ' possible domain matches in ' + fin
 			return domainValue
 def get_rows(fin, opts):
 	arr_rows = []
@@ -51,7 +50,6 @@ def get_rows(fin, opts):
 			if line =='\n':
 				break
 	arr_rows = arr_rows[:-1]
-	#INSERT FILTER OPTIONS
 	return arr_rows
 
 def get_ids(arr_rows):
@@ -173,6 +171,7 @@ def opts_filter(fin, seq_det, opts):
 def real_main(fin, fout):
 	hits = domain_hits(fin)
 	if hits == 0:
+		print "0 hits found " + fin
 		return
 	opts,args = options()
 	rows = get_rows(fin, opts)
@@ -188,8 +187,7 @@ def real_main(fin, fout):
 if __name__ == '__main__':
 	if len(sys.argv) <3:
 		print "1 = FASFA parser, 2 = Hmm_profile 3 = out_file"
-		print "if 4 = f(ilter) 5 = e-value minimun threshold for match to query"
-		print "optional 6th argv allows for minimal lenght"
+		print "for options input command arguements followed by -h"
 		print len(sys.argv)
 		sys.exit(1)
 	fin = sys.argv[1]
@@ -198,7 +196,6 @@ if __name__ == '__main__':
 		for subdir, dirs, files in os.walk(fin):
 			for file in files:
 				path = os.path.join(subdir, file)
-				# print 'file = ' + path
 				real_main(path, fout)
 	else:
 		real_main(fin, fout)
