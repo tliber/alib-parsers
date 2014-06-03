@@ -19,7 +19,8 @@
 import sys
 import re
 import fileinput
-import 
+import os
+import fnmatch
 def domain_hits(fin):
 	hmm_FILE  = open(fin, "rb")
 	for line in hmm_FILE:
@@ -29,8 +30,6 @@ def domain_hits(fin):
 			domainValue = re.findall('\d+',domainValueString)
 			if domainValue:
 				domainValue = int(domainValue[0])
-			if domainValue == 0:
-				sys.exit(1)
 			return domainValue
 def get_rows(fin):
 	arr_rows = []
@@ -82,7 +81,6 @@ def get_det(fin, ids):
 					finder = False
 		else:
 			break
-	# print all_desc
 	return all_desc	
 def get_aminos(fin, desc_arr):
 	hmm_f = open(fin, 'r')
@@ -127,10 +125,22 @@ def get_aminos(fin, desc_arr):
 def fasta_former(data):
 	format = ''
 	for line in data:
+		# print str(line)
 		format = format + line + '\n'
 	return format
-def options():
-	
+
+def main_steps(fin, fout):
+	hits = domain_hits(fin)
+	if hits == 0:
+		print 'no hits for ' + fin
+		return
+	rows = get_rows(fin)
+	seq_ids = get_ids(rows)
+	seq_det = get_det(fin, seq_ids)
+	fasta_data = get_aminos(fin, seq_det) 
+	fasta_format =fasta_former(fasta_data)
+	f = open(fout, 'a')
+	f.write(fasta_format)
 if __name__ == '__main__':
 	if len(sys.argv) <3:
 		print "1 = FASFA parser, 2 = Hmm_profile 3 = out_file"
@@ -141,28 +151,14 @@ if __name__ == '__main__':
 
 	fin = sys.argv[1]
 	fout = sys.argv[2]
-	hits = domain_hits(fin)
-	if hits == 0:
-		print 'no hits'
-		sys.exit(1)
+	if 	os.path.isdir(fin):
+		for subdir, dirs, files in os.walk(fin):
+			for file in files:
+				path = os.path.join(subdir, file)
+				print 'file = ' + path
+				process_rec(path, fout)
+	else:
+		main_steps(fin, fout)
 
-	# options = {'acc' : 'v_acc','ival' : 'i_val' ,'len' : 'seq_len'}
+
 	
-	
-	rows = get_rows(fin)
-	seq_ids = get_ids(rows)
-	seq_det = get_det(fin, seq_ids)
-	fasta_data = get_aminos(fin, seq_det) 
-	fasta_format =fasta_former(fasta_data)
-	f = open(fout, 'a')
-	f.write(fasta_format)
-	
-	
-	class string:
-		var x;
-		
-		def constructor(5):
-			x = 5
-			
-		def add(y):
-			x = x + y
