@@ -19,7 +19,7 @@
 import sys
 import re
 import fileinput
-
+import 
 def domain_hits(fin):
 	hmm_FILE  = open(fin, "rb")
 	for line in hmm_FILE:
@@ -129,6 +129,8 @@ def fasta_former(data):
 	for line in data:
 		format = format + line + '\n'
 	return format
+def options():
+	
 if __name__ == '__main__':
 	if len(sys.argv) <3:
 		print "1 = FASFA parser, 2 = Hmm_profile 3 = out_file"
@@ -143,6 +145,10 @@ if __name__ == '__main__':
 	if hits == 0:
 		print 'no hits'
 		sys.exit(1)
+
+	# options = {'acc' : 'v_acc','ival' : 'i_val' ,'len' : 'seq_len'}
+	
+	
 	rows = get_rows(fin)
 	seq_ids = get_ids(rows)
 	seq_det = get_det(fin, seq_ids)
@@ -150,3 +156,13 @@ if __name__ == '__main__':
 	fasta_format =fasta_former(fasta_data)
 	f = open(fout, 'a')
 	f.write(fasta_format)
+	
+	
+	class string:
+		var x;
+		
+		def constructor(5):
+			x = 5
+			
+		def add(y):
+			x = x + y
