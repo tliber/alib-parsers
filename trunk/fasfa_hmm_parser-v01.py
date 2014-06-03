@@ -30,6 +30,7 @@ def domain_hits(fin):
 			domainValue = re.findall('\d+',domainValueString)
 			if domainValue:
 				domainValue = int(domainValue[0])
+				print str(domainValue)+ ' hits for ' + fin
 			return domainValue
 def get_rows(fin):
 	arr_rows = []
@@ -128,12 +129,24 @@ def fasta_former(data):
 		# print str(line)
 		format = format + line + '\n'
 	return format
+def options():
+	opts = OptionParser()
+	parser.add_option("-a","--acc", dest="o_acc")
+	parser.add_option("-h","--help", dest="help")
+	parser.add_option("-l","--len", dest="o_len")
+	parser.add_option("-i","--ival", dest="ivalue")
+	parser.add_option("-e","--eval", dest="evalue")
+    
+	(options, args) = opts.parse_args()
+
+	return options.__dict__, args
 
 def real_main(fin, fout):
 	hits = domain_hits(fin)
 	if hits == 0:
-		print 'no hits for ' + fin
+		# print 'no hits for ' + fin
 		return
+	# opts, args = options()
 	rows = get_rows(fin)
 	seq_ids = get_ids(rows)
 	seq_det = get_det(fin, seq_ids)
@@ -148,14 +161,14 @@ if __name__ == '__main__':
 		print "optional 6th argv allows for minimal lenght"
 		print len(sys.argv)
 		sys.exit(1)
-
+	# opts, args = options()
 	fin = sys.argv[1]
 	fout = sys.argv[2]
 	if 	os.path.isdir(fin):
 		for subdir, dirs, files in os.walk(fin):
 			for file in files:
 				path = os.path.join(subdir, file)
-				print 'file = ' + path
+				# print 'file = ' + path
 				real_main(path, fout)
 	else:
 		real_main(fin, fout)
