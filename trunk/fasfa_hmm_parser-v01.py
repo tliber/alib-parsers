@@ -129,7 +129,7 @@ def fasta_former(data):
 		format = format + line + '\n'
 	return format
 
-def main_steps(fin, fout):
+def real_main(fin, fout):
 	hits = domain_hits(fin)
 	if hits == 0:
 		print 'no hits for ' + fin
@@ -156,9 +156,9 @@ if __name__ == '__main__':
 			for file in files:
 				path = os.path.join(subdir, file)
 				print 'file = ' + path
-				process_rec(path, fout)
+				real_main(path, fout)
 	else:
-		main_steps(fin, fout)
+		real_main(fin, fout)
 
 
 	
