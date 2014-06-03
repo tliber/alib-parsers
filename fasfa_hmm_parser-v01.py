@@ -20,7 +20,8 @@ import sys
 import re
 import fileinput
 import os
-import fnmatch
+from optparse import OptionParser
+from math import e
 def domain_hits(fin):
 	hmm_FILE  = open(fin, "rb")
 	for line in hmm_FILE:
@@ -32,7 +33,7 @@ def domain_hits(fin):
 				domainValue = int(domainValue[0])
 				print str(domainValue)+ ' hits for ' + fin
 			return domainValue
-def get_rows(fin):
+def get_rows(fin, opts):
 	arr_rows = []
 	arr_row = []
 	finder = True
@@ -131,25 +132,44 @@ def fasta_former(data):
 	return format
 def options():
 	opts = OptionParser()
-	parser.add_option("-a","--acc", dest="o_acc")
-	parser.add_option("-h","--help", dest="help")
-	parser.add_option("-l","--len", dest="o_len")
-	parser.add_option("-i","--ival", dest="ivalue")
-	parser.add_option("-e","--eval", dest="evalue")
+	opts.add_option("-a","--acc", dest="o_acc", help ="returns fasta sequences with minimum accuaracy(as a percentage) of the matching sequence")
+	# opts.add_option("-h","--help", dest="help", help = "prints details about options")
+	opts.add_option("-l","--len", dest="o_len", help = "seq")
+	opts.add_option("-i","--ival", dest="ivalue",help="sets max for i-values")
+	opts.add_option("-c","--cval", dest="cvalue", help = "sets max for e-values")
     
-	(options, args) = opts.parse_args()
+	(opts, args) = opts.parse_args()
 
-	return options.__dict__, args
+	return opts.__dict__, args
+def opts_filter(fin, seq_det, opts):
+	if opts["cvalue"]:
+		for row in seq_det:
+			if float(row[5]) >= float(opts["cvalue"]):
+				seq_det.remove(row)
+	if opts["ivalue"]:	
+		for row in seq_det:
+			if float(row[6]) >= float(opts["ivalue"]):
+				seq_det.remove(row)
+	if opts["o_acc"]:	
+		for row in seq_det:
+			if float(row[16]) <= float(opts["o_acc"]):
+				print str(row[16])
+				seq_det.remove(row)
 
+					
+	print str(len(seq_det)) + ' hits filtered from ' + str(fin)
+	return seq_det
 def real_main(fin, fout):
 	hits = domain_hits(fin)
 	if hits == 0:
-		# print 'no hits for ' + fin
 		return
-	# opts, args = options()
-	rows = get_rows(fin)
+	opts,args = options()
+	rows = get_rows(fin, opts)
+	
 	seq_ids = get_ids(rows)
 	seq_det = get_det(fin, seq_ids)
+	if opts:
+		opts_filter(fin, seq_det, opts)
 	fasta_data = get_aminos(fin, seq_det) 
 	fasta_format =fasta_former(fasta_data)
 	f = open(fout, 'a')
@@ -161,7 +181,6 @@ if __name__ == '__main__':
 		print "optional 6th argv allows for minimal lenght"
 		print len(sys.argv)
 		sys.exit(1)
-	# opts, args = options()
 	fin = sys.argv[1]
 	fout = sys.argv[2]
 	if 	os.path.isdir(fin):
