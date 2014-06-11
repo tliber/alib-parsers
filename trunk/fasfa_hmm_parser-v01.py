@@ -67,14 +67,23 @@ def get_rows(fin, opts):
 	arr_rows = []
 	arr_row = []
 	finder = True
+	skipper = False
 	hmm_f = open(fin, 'r')
 	for line in hmm_f:
 		if finder:
 			pos= line.find('E-value  score  bias    E-value  score  bias    exp  N  Sequence   ')
 			if pos !=-1:
+				hmm_f.next()
 				finder = False
-				next(hmm_f)
+				
+		
+		# elif skipper == False:
+				# print line
+				# continue
+				# skipper = True
+			
 		else:
+			print line
 			items = line.split()
 			arr_rows.append(items)
 			arr_row = []
@@ -99,8 +108,8 @@ def get_det(fin, ids):
 		if step != maxstep:
 			if not finder:
 				if line.find('>> ' + ids[step]) != -1:
-					next(hmm_f)
-					next(hmm_f)
+					hmm_f.next()
+					hmm_f.next()
 					finder = True			
 			else:
 				if line != '\n':
@@ -206,7 +215,6 @@ def opts_filter(fin, seq_det,proteinType, sum_rows, opts):
 		dom_form = ''
 		out_f2 = open(opts["dom"], 'a')
 		dom_det = seq_det[:]
-
 		if os.stat(opts["dom"])[6]==0:
 			headers =  "ID # certainty score  bias  c-Evalue  i-Evalue hmmfrom  hmmto alitype alifrom  alito alitype envfrom  envto alitype acc".split()
 			dom_det.insert(0, headers)
@@ -250,8 +258,9 @@ def real_main(fin, fout):
 	hits = domain_hits(fin)
 	if hits == 0:
 		print "0 hits found " + fin
-		return
+		return 0
 	opts,args = options()
+	
 	proteinType = getProteinType(fin)
 	sum_rows = get_rows(fin, opts)	
 	seq_ids = get_ids(sum_rows)
