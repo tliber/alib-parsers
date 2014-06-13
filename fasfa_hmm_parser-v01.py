@@ -83,7 +83,6 @@ def get_rows(fin, opts):
 				# skipper = True
 			
 		else:
-			print line
 			items = line.split()
 			arr_rows.append(items)
 			arr_row = []
@@ -243,21 +242,28 @@ def opts_filter(fin, seq_det,proteinType, sum_rows, opts):
 				filt_sum.append(line)
 	
 		for line in filt_sum:
+			# re.
 			line[:0] = proteinType
-			line[-4:] = [''.join(line[-4:])]
+			if line[-6] == '(':
+				insert = ((line[-5] + ' ') + (line[-4]+ ' ') + (line[-1]))
+				del line[12:]
+				line.append(insert)
+			else:
+				line[-4:] = [''.join(str(line[-4:]))]
 			line = '\t'.join(str(el) for el in line)
 			fout_sum = fout_sum + line + '\n'
 		if os.stat(opts["o_sum"])[6]==0 and fout_sum != 0:
 			header =  "Query Accession Description E-value  score  bias    E-value  score  bias    exp  N  Sequence        Description".split()
 			header = '\t'.join(header) + '\n'
 			out_f3.write(header)
+		# print fout_sum
 		out_f3.write(fout_sum)
 	return seq_det
 
 def real_main(fin, fout):
 	hits = domain_hits(fin)
 	if hits == 0:
-		print "0 hits found " + fin
+		print "0 sequence matches found " + fin
 		return 0
 	opts,args = options()
 	
