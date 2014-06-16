@@ -41,7 +41,6 @@ def domain_hits(fin):
 			if domainValue:
 				domainValue = int(domainValue[0])
 			return domainValue
-
 def getProteinType(fin):
 	hmm_FILE  = open(fin, "r")
 	q_str = ''
@@ -60,9 +59,8 @@ def getProteinType(fin):
 			d_str = desc.group(1)
 			break
 	proteinType = (q_str,a_str,d_str)
-	# print protein
-	return proteinType
-			
+
+	return proteinType	
 def get_rows(fin, opts):
 	arr_rows = []
 	arr_row = []
@@ -90,7 +88,6 @@ def get_rows(fin, opts):
 				break
 	arr_rows = arr_rows[:-1]
 	return arr_rows
-
 def get_ids(arr_rows):
 	seq_ids = []
 	for row in arr_rows:
@@ -120,9 +117,7 @@ def get_det(fin, ids):
 					finder = False
 		else:
 			break
-	return all_desc	
-
-
+	return all_desc
 def get_aminos(fin, desc_arr, proteinType):
 	hmm_f = open(fin, 'r')
 	limit = len(desc_arr)
@@ -153,7 +148,7 @@ def get_aminos(fin, desc_arr, proteinType):
 						else:
 							sequence = sequence + fmatch.group(1)
 							sequence = re.sub('-','',sequence)
-							fasfa_arr.append('>' + desc_arr[step][0] + ' ' + 'D' + desc_arr[step][1] + ' ' + desc_arr[step][10]+ ' ' + desc_arr[step][11] + ' ' + ' '.join(proteinType[1:]) + '\n' + sequence)
+							fasfa_arr.append('>' + desc_arr[step][0] + ' ' + 'D' + desc_arr[step][1] + ' ' + desc_arr[step][10]+ ' ' + desc_arr[step][11] + ' ' + proteinType[1] + ' [' +' '.join(proteinType[2:]) + ']' + ' ' + 'Query: start ' + desc_arr[step][7] + ' end ' + desc_arr[step][8] + '\n' + sequence)
 							step += 1
 							sequence = ''
 							if step == limit:
@@ -162,7 +157,6 @@ def get_aminos(fin, desc_arr, proteinType):
 								id_match = False
 								found = False
 	return fasfa_arr
-
 def fasta_former(data):
 	format = ''
 	for line in data:
@@ -171,10 +165,10 @@ def fasta_former(data):
 	return format
 def options():
 	opts = OptionParser()
-	opts.add_option("-a","--acc", dest="o_acc", help ="sets a min accuaracy for sequence match(enter percentage)")
-	opts.add_option("-l","--len", dest="o_len", help = "set min sequence lenght(enter lenght)")
+	opts.add_option("-a","--acc", dest="o_acc", help ="sets a min accuracy for sequence match(enter percentage)")
+	opts.add_option("-l","--len", dest="o_len", help = "set min sequence lenght for bps(enter length)")
 	opts.add_option("-i","--ival", dest="ivalue",help="sets max for i-values(enter i-value)")
-	opts.add_option("-c","--cval", dest="cvalue", help = "sets max for e-values(enter e-value")
+	opts.add_option("-c","--cval", dest="cvalue", help = "sets max for c-values(enter c-value")
 	opts.add_option("-s","--out2", dest="o_sum", help = "returns a summary file of the domain hits")
 	opts.add_option("-d","--out3", dest="dom", help = "prints domain details to outfile")
     
@@ -259,7 +253,6 @@ def opts_filter(fin, seq_det,proteinType, sum_rows, opts):
 		# print fout_sum
 		out_f3.write(fout_sum)
 	return seq_det
-
 def real_main(fin, fout):
 	hits = domain_hits(fin)
 	if hits == 0:
@@ -279,9 +272,8 @@ def real_main(fin, fout):
 	f.write(fasta_format)
 if __name__ == '__main__':
 	if len(sys.argv) <3:
-		print "1 = FASFA parser, 2 = Hmm_profile 3 = out_file"
+		print "1 = fasfa_hmm_parcer, 2 = Hmm_profile 3 = out_file"
 		print "for options input command arguements followed by -h"
-		print len(sys.argv)
 		sys.exit(1)
 	fin = sys.argv[1]
 	fout = sys.argv[2]
