@@ -148,7 +148,7 @@ def get_aminos(fin, desc_arr, proteinType):
 						else:
 							sequence = sequence + fmatch.group(1)
 							sequence = re.sub('-','',sequence)
-							fasfa_arr.append('>' + desc_arr[step][0] + ' ' + 'D' + desc_arr[step][1] + ' ' + desc_arr[step][10]+ ' ' + desc_arr[step][11] + ' ' + proteinType[1] + ' [' +' '.join(proteinType[2:]) + ']' + ' ' + 'Query: start ' + desc_arr[step][7] + ' end ' + desc_arr[step][8] + '\n' + sequence)
+							fasfa_arr.append('>' + desc_arr[step][0] + ' ' + 'D' + desc_arr[step][1] + ' ' + desc_arr[step][10]+ ' ' + desc_arr[step][11] + ' ' + proteinType[1] + ' [' +' '.join(proteinType[2:]) + ']' + ' ' +proteinType[0] + ' ' + 'Query: start ' + desc_arr[step][7] + ' end ' + desc_arr[step][8] + '\n' + sequence)
 							step += 1
 							sequence = ''
 							if step == limit:
@@ -160,7 +160,6 @@ def get_aminos(fin, desc_arr, proteinType):
 def fasta_former(data):
 	format = ''
 	for line in data:
-		# print str(line)
 		format = format + line + '\n'
 	return format
 def options():
@@ -208,17 +207,18 @@ def opts_filter(fin, seq_det,proteinType, sum_rows, opts):
 		dom_form = ''
 		out_f2 = open(opts["dom"], 'a')
 		dom_det = seq_det[:]
+		query, accession, description = proteinType[0], proteinType[1], proteinType[2]
 		if os.stat(opts["dom"])[6]==0:
-			headers =  "ID # certainty score  bias  c-Evalue  i-Evalue hmmfrom  hmmto alitype alifrom  alito alitype envfrom  envto alitype acc".split()
-			dom_det.insert(0, headers)
+			headers =  "Query Accession Description ID # certainty score bias c-Evalue i-Evalue hmmfrom hmmto alitype alifrom alito alitype envfrom envto alitype acc"
+			headers = re.sub('\s','\t', headers)
+			out_f2.write(headers + '\n')
 		for line in dom_det:
 			line = '\t'.join(line)
 			line = re.sub('\.\.','P',line)
 			line = re.sub('\[\]','C',line)
 			line = re.sub('\.\]','R',line)
-			line = re.sub('\[\.','F',line)
-			dom_form = dom_form + line + '\n'	
-		out_f2.write(dom_form)
+			line = re.sub('\[\.','F',line)	
+			out_f2.write(proteinType[0]+'\t'+ proteinType[1]+'\t'+ proteinType[2]+'\t' + line + '\n')
 	
 	if opts["o_sum"]:
 		sum_mark = seq_det[:]
@@ -226,15 +226,12 @@ def opts_filter(fin, seq_det,proteinType, sum_rows, opts):
 		filt_sum = []
 		fout_sum = ''
 		out_f3 = open(opts["o_sum"], 'a')
-		
 		for line in sum_mark:
 			sum_ids.append(line[0])
-			
 		for line in sum_rows:
 			if line[8] in sum_ids:
 				line[7] = sum_ids.count(line[8])
 				filt_sum.append(line)
-	
 		for line in filt_sum:
 			# re.
 			line[:0] = proteinType
@@ -250,7 +247,6 @@ def opts_filter(fin, seq_det,proteinType, sum_rows, opts):
 			header =  "Query Accession Description E-value  score  bias    E-value  score  bias    exp  N  Sequence        Description".split()
 			header = '\t'.join(header) + '\n'
 			out_f3.write(header)
-		# print fout_sum
 		out_f3.write(fout_sum)
 	return seq_det
 def real_main(fin, fout):
