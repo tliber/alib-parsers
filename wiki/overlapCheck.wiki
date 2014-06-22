@@ -1,0 +1,31 @@
+#summary checks for overlapping gene sequences and prints those sequences to an output file.
+
+= Introduction =
+
+input:
+
+`>> python.exe overlapCheck.py inputFILEtoREAD.tab outputFILE.tab
+
+
+
+= Details =
+
+input format: 
+
+excel/tab delimited file, the columns should be arranged as follows 
+
+||Chromosome||Sequence Version||type||gene start||gene snd||any||any||gene Name||Old Sequence Version||
+
+output:
+
+returns a tab-delimited excel ready formatted list of overlapping sequences in the following order:
+
+||Chromosome||Gene1||Gene2||Overlap Length||Overlap Start||Overlap End||
+
+Lsat_1_v6_lg_1  Lsa000223       Lsa000225       42352   1917404 1959756
+Lsat_1_v6_lg_1  Lsa000239       Lsa000225       90041   1917404 2007445
+Lsat_1_v6_lg_1  Lsa000239       Lsa000223       65366   1942079 2007445
+Lsat_1_v6_lg_1  Lsa000237       Lsa000225       121470  1917404 2038874
+Lsat_1_v6_lg_1  Lsa000237       Lsa000223       96795   1942079 2038874
+Lsat_1_v6_lg_1  Lsa000237       Lsa000239       43627   1995247 2038874
+ 
