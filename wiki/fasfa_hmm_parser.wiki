@@ -61,26 +61,28 @@ Full Sequence
 ==Sequence’s Domain Annotations(-d)==
 Domain annotation for each sequence (and alignments):
 
-||Column 1||Sequence ID||_sequence_||
-||Column 2||Sub domain number for domain match ||_{{{#}}}_||
-||Column 3||Type of sequence ||_type_||
-||Column 4||normalized expectation (-log(Exp)) ||_score_||
-||Column 5||expectation bias ||_bias_||
-||Column 6||match value adjusted for haploid class and genome size, measured in pg (millions of base pairs) ||_c-Evalue_||
-||Column 7||amount of DNA embedded adjusted for alternative slicing, post-translation modifications, multidomain proteins ,gene redundancy, expression and interaction ||_i-Evalue_||
-||Column 8||first position of the "Query" sequence in the alignment ||_hmm from_||
-||Column 9||last position of the "Query" sequence in the alignment ||_hmmto_||
-||Column 10|| type of sequencing conducted on Query||_type_||
+||Column 1|| hmm Query ID ||_Query_||
+||Column 2|| hmm Accession ID ||_Accession_||
+||Column 3||Sequence ID||_sequence_||
+||Column 4||Sub domain number for domain match ||_{{{#}}}_||
+||Column 5||Type of sequence ||_type_||
+||Column 6||normalized expectation (-log(Exp)) ||_score_||
+||Column 7||expectation bias ||_bias_||
+||Column 8||match value adjusted for haploid class and genome size, measured in pg (millions of base pairs) ||_c-Evalue_||
+||Column 9||amount of DNA embedded adjusted for alternative slicing, post-translation modifications, multidomain proteins ,gene redundancy, expression and interaction ||_i-Evalue_||
+||Column 10||first position of the "Query" sequence in the alignment ||_hmm from_||
+||Column 11||last position of the "Query" sequence in the alignment ||_hmmto_||
+||Column 12|| type of sequencing conducted on Query||_type_||
 ||P||  partial alignment ||
 ||C||  complete alignment ||
 ||R||  partial upstream alignment ||
 ||F||  partial downstream alignment ||
-||Column 11|| first position of the "Subject" sequence in the alignment ||_alifrom_||
-||Column 12||aligned to last position of the "Subject" sequence in the alignment  ||_ali to_||  
-||Column 13||type of sequencing conducted on "Subject" ||_PCRF_||
-||Column 14||alignment for referenced sequence match||_envfrom_|| 
-||Column 15||alignment until referenced sequence match end||_envto_||     
-||Column 16||type of sequencing conducted on Query|||_PCRF_||
-||Column 17|| percent of identity matched ||_acc_||
+||Column 13|| first position of the "Subject" sequence in the alignment ||_alifrom_||
+||Column 14||aligned to last position of the "Subject" sequence in the alignment  ||_ali to_||  
+||Column 15||type of sequencing conducted on "Subject" ||_PCRF_||
+||Column 16||alignment for referenced sequence match||_envfrom_|| 
+||Column 17||alignment until referenced sequence match end||_envto_||     
+||Column 18||type of sequencing conducted on Query|||_PCRF_||
+||Column 19|| percent of identity matched ||_acc_||
 
 For more information about hmm_pfam_domains visit http://hmmer.janelia.org/
