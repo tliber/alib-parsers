@@ -1,6 +1,7 @@
 import sys
 import os
 from operator import itemgetter
+from optparse import OptionParser
 
 def order_chromes(fin):
 	f_arr = []
@@ -28,30 +29,46 @@ def order_chromes(fin):
 	for gene in chr_arr:
 		gene.sort(lambda x, y: cmp(int(x[3]), int(y[3])))
 	return chr_arr
-def manip(chr_arr, fout):
+def manip(chr_arr, fout, opts):
 	for chr in chr_arr:
-		overlapper(chr, fout)
-	
+		overlapper(chr, fout, opts)
 	return 0 
-def overlapper(chr, fout):
+def overlapper(chr, fout, opts):
+	
 	for gene1 in chr:
 		g1_start = int(gene1[3])
 		g1_end = int(gene1[4])
 		for gene2 in chr:
-			if gene1 != gene2:
+			if gene2[8] != gene1[8]:
 				g2_start = int(gene2[3])
-				g2_end = int(gene2[4])
-				if g2_start <= g1_end:
+				g2_end = int(gene2[4])		
+				if  g1_start <= g2_start <= g1_end:
 					over_len = (g1_end - g2_start)
-					fout.write(gene1[0] + '\t' + gene1[8] + '\t' + gene2[8] + '\t' + `over_len` + '\t' + `g1_end - over_len` + '\t' + `g2_start + over_len ` + '\n')
+					if opts["o_len"]:
+						if over_len <= int(opts["o_len"]):	
+							fout.write(gene1[0] + '\t' + gene1[8] + '\t' + gene2[8] + '\t' + `over_len` + '\t' + `g1_end - over_len` + '\t' + `g2_start + over_len ` + '\n')
+							print gene1[0] + '\t' + gene1[8] + '\t' + gene2[8] + '\t' + `over_len` + '\t' + `g1_end - over_len` + '\t' + `g2_start + over_len ` + '\n'
+					if g1_start == g2_start and g1_end == g2_end:
+						count = count + 1
+						continue
+					else:
+						fout.write(gene1[0] + '\t' + gene1[8] + '\t' + gene2[8] + '\t' + `over_len` + '\t' + `g1_end - over_len` + '\t' + `g2_start + over_len ` + '\n')
+						print gene1[0] + '\t' + gene1[8] + '\t' + gene2[8] + '\t' + `over_len` + '\t' + `g1_end - over_len` + '\t' + `g2_start + over_len ` + '\n'
 				if g2_start > g1_end:
 					break
-	return 0
+	return count
+def parameters():
+	opts = OptionParser()
+	opts.add_option("-l", dest="o_len", help ="sets up a minimun overlap as overlab criteria")
+	opts.add_option("-d", dest="dup", help ="removes duplicate gene sequences from output")
+	(opts, args) = opts.parse_args()
+	return opts.__dict__, args
 def real_main(fin, fout):
 	chr_arr = order_chromes(fin)
-	manip(chr_arr, fout)
-	
+	opts,args = parameters()
+	manip(chr_arr, fout, opts)
 if __name__ == '__main__':
 	fin  = open(sys.argv[1], 'rb')
-	fout = open(sys.argv[2], 'wb')
+	fout = open(sys.argv[2], 'ab')
+	
 	real_main(fin, fout)
