@@ -6,9 +6,10 @@ input:
 
 `>> python.exe overlapCheck.py inputFILEtoREAD.tab outputFILE.tab
 
+with optional flags/arguments:
 
-
-= Details =
+>> python.exe overlapCheck.py inputFILEtoREAD.tab outputFILE.tab -d -l 1000
+== Details ==
 
 input format: 
 
@@ -28,4 +29,11 @@ Lsat_1_v6_lg_1  Lsa000239       Lsa000223       65366   1942079 2007445
 Lsat_1_v6_lg_1  Lsa000237       Lsa000225       121470  1917404 2038874
 Lsat_1_v6_lg_1  Lsa000237       Lsa000223       96795   1942079 2038874
 Lsat_1_v6_lg_1  Lsa000237       Lsa000239       43627   1995247 2038874
+
+== optional flags ==
+
+|| -d || inserts another column to deviate between perfectly aligning  sequences(i.e from different version), "OP" indicates a perfect alignment, "-" is the default filler||
+
+|| -l || the -l option allows the user to filter out sequences with overlap lengths below a given threshold (i.e user input value following -l || 
+
  
