@@ -34,6 +34,6 @@ Lsat_1_v6_lg_1  Lsa000237       Lsa000239       43627   1995247 2038874
 
 || -d || inserts another column to deviate between perfectly aligning  sequences(i.e from different version), "OP" indicates a perfect alignment, "-" is the default filler||
 
-|| -l || the -l option allows the user to filter out sequences with overlap lengths below a given threshold (i.e user input value following -l || 
+|| -l || the "-l" option allows the user to filter out sequences with overlap lengths below a given threshold (i.e user input value following "-l" || 
 
  
