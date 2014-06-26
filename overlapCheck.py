@@ -32,6 +32,7 @@ def order_chromes(fin):
 def manip(chr_arr, fout, opts):
 	for chr in chr_arr:
 		overlapper(chr, fout, opts)
+		print '1 more'
 	return 0 
 def overlapper(chr, fout, opts):
 	
@@ -44,23 +45,27 @@ def overlapper(chr, fout, opts):
 				g2_end = int(gene2[4])		
 				if  g1_start <= g2_start <= g1_end:
 					over_len = (g1_end - g2_start)
-					if opts["o_len"]:
-						if over_len <= int(opts["o_len"]):	
-							fout.write(gene1[0] + '\t' + gene1[8] + '\t' + gene2[8] + '\t' + `over_len` + '\t' + `g1_end - over_len` + '\t' + `g2_start + over_len ` + '\n')
-							print gene1[0] + '\t' + gene1[8] + '\t' + gene2[8] + '\t' + `over_len` + '\t' + `g1_end - over_len` + '\t' + `g2_start + over_len ` + '\n'
-					if g1_start == g2_start and g1_end == g2_end:
-						count = count + 1
-						continue
+					if opts["o_len"] and over_len <= int(opts["o_len"]):
+						# if over_len <= int(opts["o_len"]):	
+							# fout.write(gene1[0] + '\t' + gene1[8] + '\t' + gene2[8] + '\t' + `over_len` + '\t' + `g1_end - over_len` + '\t' + `g2_start + over_len ` + '\n')
+							# print gene1[0] + '\t' + gene1[8] + '\t' + gene2[8] + '\t' + `over_len` + '\t' + `g1_end - over_len` + '\t' + `g2_start + over_len ` + '\n'
+							continue
+					if opts["dup"]:
+						if g1_start == g2_start and g1_end == g2_end:
+							fout.write(gene1[0] + '\t' + gene1[8] + '\t' + gene2[8] + '\t' + `over_len` + '\t' + `g1_end - over_len` + '\t' + `g2_start + over_len ` + '\t' + 'OP' + '\n')
+						else: 
+							fout.write(gene1[0] + '\t' + gene1[8] + '\t' + gene2[8] + '\t' + `over_len` + '\t' + `g1_end - over_len` + '\t' + `g2_start + over_len ` + '\t' + '-' + '\n')
+							continue
 					else:
 						fout.write(gene1[0] + '\t' + gene1[8] + '\t' + gene2[8] + '\t' + `over_len` + '\t' + `g1_end - over_len` + '\t' + `g2_start + over_len ` + '\n')
-						print gene1[0] + '\t' + gene1[8] + '\t' + gene2[8] + '\t' + `over_len` + '\t' + `g1_end - over_len` + '\t' + `g2_start + over_len ` + '\n'
+						# print gene1[0] + '\t' + gene1[8] + '\t' + gene2[8] + '\t' + `over_len` + '\t' + `g1_end - over_len` + '\t' + `g2_start + over_len ` + '\n'
 				if g2_start > g1_end:
 					break
-	return count
+	return 0
 def parameters():
 	opts = OptionParser()
 	opts.add_option("-l", dest="o_len", help ="sets up a minimun overlap as overlab criteria")
-	opts.add_option("-d", dest="dup", help ="removes duplicate gene sequences from output")
+	opts.add_option("-d", "--rem", action="store_true",dest="dup",default=False,help="add perfect duplicate flag to print to output")
 	(opts, args) = opts.parse_args()
 	return opts.__dict__, args
 def real_main(fin, fout):
