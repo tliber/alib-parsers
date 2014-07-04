@@ -1,4 +1,4 @@
-#Summary Aligns fasta sequences to specific sequence or sub-sequence 
+#summary Aligns fasta sequences to specific sequence or sub-sequence
 
 
 = Introduction =
