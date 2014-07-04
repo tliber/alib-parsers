@@ -1,4 +1,5 @@
-#Outputs aligned fasta sequences based on the best bp match
+#Summary Aligns fasta sequences to specific sequence or sub-sequence 
+
 
 = Introduction =
 
