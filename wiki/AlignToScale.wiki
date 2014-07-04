@@ -2,13 +2,41 @@
 
 
 = Introduction =
+The input should be a fasta formatted as such
 
-Add your content here.
+>Viti_vini.XP_002285787 D1 4 238 PF00244.15 [14-3-3 protein] 14-3-3 Query: start 1 end 235
+AEQAERYDEMVEAMKKVAKLDVELTVEERNLVSVGYKNVIGARRASWRILSSIEQKEETRGNEQNAKRIKDYRQRVEDELSKICNDILSVIDNHLIPSSS
+>Popu_tric.XP_002311335 D1 7 241 PF00244.15 [14-3-3 protein] 14-3-3 Query: start 1 end 235
+AEQAERYDEMVESMKNVAKLNCDLTVEERNLLSVGYKNVIGARRASWRIMSSIEQKEESKGNDSNVKLIKGYRQKVEEELSKICNDILSIIDDHLIPSSA
+>Sola_lyco.XP_004239061 D1 7 241 PF00244.15 [14-3-3 protein] 14-3-3 Query: start 1 end 235
+AEQAERYDEMVESMKKVAKLDVELTVEERNLLSVGYKNVIGARRASWRIMSSIEQKEESKGNEQNVKLIKGYRQKVEEELSKICSDILDIIDKHLIPSAG
+
+==Launching in Command line==
+arg[1] = fasta.seq (like the one listed above)
+arg[2] = outfile
+arg[3] = desired_sequence_to_match: must be found in file
+arg[4] = specific domain for desired_sequence
+arg[5] = starting point for alignment, note that 1 indicates the first number in the domain provided
+arg[6] = end point for alignment, not that this is also in reference to the first domain bp
+
+`>>Python/python.exe AlignToScale.py seq.fasta aligned.out query_fullname domain_N(#) starting_bp last_bp`
+
+`>> Python/python.exe AlignToScale.py b.out out.q Cucu_sati.XP_004162227 1 1 40`
+
+
+= output_sample =
+>Rici_comm.XP_002513928 D1 5 239 PF00244.15 [14-3-3 protein] 14-3-3 Query: start 1 end 235
+EQAERYDEMVEAMKKVAKLDVELTVEERNLVSVGYKNVI
+>Citr_clem.XP_006446785 D1 7 240 PF00244.15 [14-3-3 protein] 14-3-3 Query: start 1 end 234
+EQAERYDEMVDAMKNVAKLDVELTVEERNLLSVGYKNVI
+>Citr_sine.XP_006469024 D1 7 240 PF00244.15 [14-3-3 protein] 14-3-3 Query: start 1 end 234
+EQAERYDEMVDAMKNVAKLDVELTVEERNLLSVGYKNVI
+>Glyc_max.XP_003544808 D1 8 244 PF00244.15 [14-3-3 protein] 14-3-3 Query: start 1 end 235
+AERYEEMVEFMEKVSASaeSEELTVEERNLLSVAYKNVI
+>Arab_thal.NP_567344 D1 10 246 PF00244.15 [14-3-3 protein] 14-3-3 Query: start 1 end 235
+AERYEEMVEFMEKVAKAvdKDELTVEERNLLSVAYKNVI
 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Alignment is simple. The script zips the sequences against each other and returns a truncated sequence with the highest sequence score (+2 for hit, -1 for miss). If entered sequence is greater that than the other fasta sequences, those with less  bp's than that of the entered value are flanked with -'s on each side and the program runs as follows.
