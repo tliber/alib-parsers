@@ -1,5 +1,5 @@
-*fasta_hmm_parcer.py* 
-#Script for extracting parameter specified fasta file and folders with optional summary and details files.
+fasta_hmm_parcer.py 
+Script for extracting parameter specified fasta file and folders with optional summary and details files.
 
 == Introduction ==
 
